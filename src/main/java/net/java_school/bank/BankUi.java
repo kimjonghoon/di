@@ -42,7 +42,7 @@ public class BankUi {
 			stream.println(" 6 ** Transaction history    ");
 			stream.println(" q ** Quit    ");
 			stream.println(" ********************** ");
-			stream.println(">>");
+			stream.print(">>");
 
 			try {
 				menu = readCommandLine();
@@ -53,13 +53,13 @@ public class BankUi {
 				double amount = 0;
 
 				if (menu.equals("1")) {
-					//TODO New Account registration
+					//New Account registration
 					stream.print("Enter the account number of the account you want to create: ");
-					accountNo = this.readCommandLine();
+					accountNo = readCommandLine();
 					stream.print("Enter the owner name of the account you want to create: ");
-					name = this.readCommandLine();
+					name = readCommandLine();
 					stream.print("Please select an account kind. noraml (just Enter), minus (2): ");
-					kind = this.readCommandLine();
+					kind = readCommandLine();
 					if (kind != null && kind.equals("2")) {
 						bank.addAccount(accountNo, name, Account.MINUS);
 					} else {
@@ -75,30 +75,30 @@ public class BankUi {
 				} else if (menu.equals("3")) {
 					//Deposit
 					stream.print("Please enter your account number: ");
-					accountNo = this.readCommandLine();
+					accountNo = readCommandLine();
 					stream.print("Please enter deposit amount: ");
-					amount = Double.parseDouble(this.readCommandLine());
+					amount = Double.parseDouble(readCommandLine());
 					bank.deposit(accountNo, amount);
 				} else if (menu.equals("4")) {
 					//Withdraw
 					stream.print("Please enter your account number: ");
-					accountNo = this.readCommandLine();
+					accountNo = readCommandLine();
 					stream.print("Please enter withdraw amount: ");
-					amount = Double.parseDouble(this.readCommandLine());
+					amount = Double.parseDouble(readCommandLine());
 					bank.withdraw(accountNo, amount);
 				} else if (menu.equals("5")) {
 					//Transfer
 					stream.print("Please enter your withdrawal account number: ");
-					String from = this.readCommandLine();
+					String from = readCommandLine();
 					stream.print("Please enter your deposit account number: ");
-					String to = this.readCommandLine();
+					String to = readCommandLine();
 					stream.print("Enter transfer amount: ");
-					amount = Double.parseDouble(this.readCommandLine());
+					amount = Double.parseDouble(readCommandLine());
 					bank.transfer(from, to, amount);
 				} else if (menu.equals("6")) {
 					//Transaction history
 					stream.print("Please enter your account number: ");
-					accountNo = this.readCommandLine();
+					accountNo = readCommandLine();
 					List<Transaction> transactions = bank.getTransactions(accountNo);
 					for (Transaction transaction : transactions) {
 						stream.println(transaction);
